@@ -1,0 +1,15 @@
+{
+  "name": "discord-convotalk",
+  "version": "1.0.0",
+  "description": "Clone Discord avec chat temps réel",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd frontend && yarn install && yarn build",
+    "start": "cd backend && python render-start.py",
+    "dev-frontend": "cd frontend && yarn start",
+    "dev-backend": "cd backend && python server.py"
+  },
+  "keywords": ["discord", "chat", "react", "fastapi", "websocket"],
+  "author": "ConvoTalk",
+  "license": "MIT"
+}

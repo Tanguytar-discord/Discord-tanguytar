@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: discord-convotalk-backend
+    env: python
+    buildCommand: "pip install -r backend/requirements.txt"
+    startCommand: "cd backend && uvicorn server:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: MONGO_URL
+        sync: false
+      - key: DB_NAME
+        value: discord_clone_db
+      - key: JWT_SECRET
+        sync: false
+      - key: CORS_ORIGINS
+        value: "*"
+    
+  - type: web
+    name: discord-convotalk-frontend
+    env: node
+    buildCommand: "cd frontend && yarn install && yarn build"
+    staticPublishPath: ./frontend/build
+    routes:
+      - type: rewrite
+        source: "/*"
+        destination: "/index.html"
